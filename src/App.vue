@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <original-words />
-    <hr />
     <translated-words />
   </div>
 </template>
@@ -18,4 +17,7 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+
+</style>
