@@ -1,0 +1,132 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+	font-size: 16px;
+}
+@media screen and (min-width: 320px) {
+  html {
+		/* to achieve fluid typography: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width]))); */
+		font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+  }
+}
+@media screen and (min-width: 1000px) {
+  html {
+    font-size: 22px;
+  }
+}
+
+body {
+	display: flex;
+	background-color: #fff;
+	flex-direction: column;
+	height: 100%;
+	margin: 0;
+	font-family: Lato, sans-serif;
+	color: #444;
+}
+
+main {
+	flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-vertical-center {
+	justify-content: center;
+}
+
+section#top-wrapper {
+	display: flex;
+	flex-direction: column;
+	background-image: url("../images/bg.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 40%;
+	max-height: 50%;
+	padding-left: 2em;
+	padding-right: 0.7em;
+	padding-bottom: 2em;
+}
+
+#languages-wrapper { padding-bottom: 1.7em; }
+
+#from-language, #to-language {
+	font-size: 2.1em;
+	color: ghostwhite;
+}
+
+#swap-languages {
+	height: 1.5em;
+	width: auto;
+	padding: 0 1em;
+}
+
+input {
+	outline: none;
+	border: none;
+}
+
+input, button {
+	overflow: visible;
+}
+
+input.word-to-translate {
+	height: 4em;
+	padding: 0 1.5em 0 1.6em;
+	font-size: 16px;
+	border-radius: 1.6em;
+	min-width: 250px;
+	max-width: 500px;
+	width: 100%;
+}
+
+section#bottom-wrapper {
+	display: flex;
+	flex-direction: column;
+	padding: 0 0 2em 2em;
+}
+
+.results-container {
+	margin-top: -1.5em;
+	box-shadow: 0 1px 5px 0 rgba(0,0,0,0.37);
+	border-radius: 8px;
+	max-width: 1000px;
+	background-color: #fff;
+}
+
+.results-header {
+	font-size: 1.2em;
+	background-color: #f5f5f5;
+	padding: 1em 0 1em 1em;
+}
+
+/* Tables
+================================== */
+.results-table {
+	display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 1em 0;
+	padding: 1em 0 1em 1em;
+}
+
+.results-table-cell {
+  box-sizing: border-box;
+  width: 100%;  /*Default to full width*/
+  padding: 0.1em 0.5em 0.5em 0em;
+  overflow: hidden; /* Or flex might break */
+	list-style: none;
+	border: 3px solid white;
+}
+
+.meaning {
+	line-height: 1.4em;
+}
+
+
+/* Table column sizing */
+/* ================================== */
+.results-table > .translation  { width: 30%; }
+.results-table > .meaning  { width: 70%; }
