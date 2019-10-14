@@ -1,7 +1,15 @@
 <template>
-  <div>
-    <input type="text" v-model="inputWord" @keyup="translateWord" />
-  </div>
+  <section id="top-wrapper" class="flex-vertical-center">
+    <div id="languages-wrapper">
+      <span id="from-language">English</span>
+      <!-- <img viewBox="0 0 60 55" id="swap-languages" src="./src/assets/icons/exchange-arrows.svg" /> -->
+      <span id="to-language">Esperanto</span>
+    </div>
+    <div class="textbox-container">
+      <input class="word-to-translate" type="text" name="word-to-translate"  v-model="inputWord" @keyup="translateWord">
+      <span class="word-to-translate"></span>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -10,7 +18,7 @@ import eventBus from "../eventBus.js";
 export default {
   data: function() {
     return {
-      inputWord: "Test",
+      inputWord: "Enter word here",
       translation: null,
       dictionary: {
         red: "rojo",
@@ -39,4 +47,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>
