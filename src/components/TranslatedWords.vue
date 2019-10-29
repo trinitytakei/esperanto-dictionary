@@ -9,35 +9,45 @@
       </div>
 
       <div class="results-table">
-        <div class="results-table-cell translation">
-          <span v-if="word_to_translate === ''">
-            Your search results will appear here.
-          </span>
-          <span v-else>
+        <div class="results-row">
+          {{ translation_status }}
+        </div>
+
+        <div class="results-row">
+          <div class="results-table-cell translation">
             <span v-if="this.exact_translations.length > 0">
               <strong>{{ word_to_translate }}</strong>
             </span>
-            <span v-else>
-              No Matches found!
-            </span>
-          </span>
-        </div>
-        <div
-          class="results-table-cell meaning"
-          v-for="tr in this.exact_translations"
-          :key="tr"
-        >
-          {{ tr }}
-        </div>
-
-        <div
-          class="results-table-cell meaning"
-          v-for="tr in this.related_translations"
-          :key="tr"
-        >
-          {{ tr }}
+          </div>
+          <div
+            class="results-table-cell meaning"
+            v-for="tr in this.exact_translations"
+            :key="tr"
+          >
+            {{ tr }}
+          </div>
         </div>
       </div>
+
+      <div class="results-header" v-if="word_to_translate !== ''">
+        Terms containing
+        <span>
+          <strong>{{ word_to_translate }}</strong>
+        </span>
+      </div>
+
+      <div class="results-table">
+        <div class="results-row" v-for="translation of this.related_translations">
+          <div class="results-table-cell translation">
+            <strong>{{ translation[0] }}</strong>
+          </div>
+          <div class="results-table-cell meaning">
+            {{ translation[1] }}
+          </div>
+        </div>
+      </div>
+
+
     </div>
   </section>
 </template>
@@ -52,6 +62,17 @@ export default {
       exact_translations: "",
       related_translations: ""
     };
+  },
+  computed: {
+    translation_status: function() {
+      if (this.word_to_translate === "") {
+        return "Your translation will appear here!";
+      }
+      if (this.exact_translations.length === 0) {
+        return "No exact matches found!";
+      }
+      return "";
+    }
   },
   created() {
     eventBus.$on("translationReady", translation_data => {
