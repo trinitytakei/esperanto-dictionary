@@ -6,7 +6,7 @@
 
 html {
 	height: 100%;
-	font-size: 16px;
+	font-size: 14px;
 }
 @media screen and (min-width: 320px) {
   html {
@@ -53,7 +53,10 @@ section#top-wrapper {
 	padding-bottom: 2em;
 }
 
-#languages-wrapper { padding-bottom: 1.7em; }
+#languages-wrapper {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
 
 #from-language, #to-language {
 	font-size: 2.1em;
@@ -73,6 +76,10 @@ input {
 
 input, button {
 	overflow: visible;
+}
+
+.textbox-container {
+	margin-bottom: 1em;
 }
 
 input.word-to-translate {
@@ -110,14 +117,20 @@ section#bottom-wrapper {
 .results-table {
 	display: flex;
   flex-wrap: wrap;
-  margin: 0 0 1em 0;
+  margin: 0 0 0.25em 0;
 	padding: 1em 0 1em 1em;
+}
+
+.results-row {
+	display: flex;
+	width: 100%;
+	/* flex-wrap: wrap; */
 }
 
 .results-table-cell {
   box-sizing: border-box;
   width: 100%;  /*Default to full width*/
-  padding: 0.1em 0.5em 0.5em 0em;
+  padding: 0.1em 0.5em 0.25em 0em;
   overflow: hidden; /* Or flex might break */
 	list-style: none;
 	border: 3px solid white;
@@ -130,5 +143,5 @@ section#bottom-wrapper {
 
 /* Table column sizing */
 /* ================================== */
-.results-table > .translation  { width: 30%; }
-.results-table > .meaning  { width: 70%; }
+.results-row > .translation  { width: 30%; }
+.results-row > .meaning  { width: 70%; }
