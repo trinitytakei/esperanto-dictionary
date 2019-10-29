@@ -38,8 +38,9 @@ export default {
   },
   methods: {
     translateWord() {
-      if (this.inputWord.length <= 1) {
+      if (this.inputWord.length < 1) {
         this.exact_translations = "";
+        this.related_translations = [];
       } else {
         this.exact_translations = dictionary
           .filter(pair => pair[0] == this.inputWord.toLowerCase())
@@ -54,8 +55,8 @@ export default {
       }
 
       eventBus.$emit("translationReady", [
-        this.exact_translations.slice(0, 50),
-        this.related_translations.slice(0, 50),
+        this.exact_translations,
+        this.related_translations,
         this.inputWord
       ]);
     }
